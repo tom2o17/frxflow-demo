@@ -15,8 +15,8 @@ API_ID = int(os.environ["TG_API_ID"])
 API_HASH = os.environ["TG_API_HASH"]
 SESSION = os.environ["TG_SESSION_STRING"]
 
-CHAT = int(os.environ.get("TG_CHAT", "-1002766583366"))  # your channel id
-TOPIC_ID = int(os.environ.get("TG_TOPIC_ID", "2"))       # your topic id
+CHAT = int("-1002766583366")  # your channel id
+TOPIC_ID = int("2")       # your topic id
 LIMIT = int(os.environ.get("LIMIT", "300"))
 DEBUG_LINKS = os.environ.get("DEBUG_LINKS", "0") == "1"
 
