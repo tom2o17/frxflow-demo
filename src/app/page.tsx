@@ -27,7 +27,11 @@ export default function Home() {
       try {
         const r = await fetch("/telegram-feed.json", { cache: "no-store" });
         if (!alive) return;
-        if (r.ok) setRecent(await r.json());
+        if (r.ok) {
+          const data = await r.json();
+          // ensure it's an array
+          setRecent(Array.isArray(data) ? data : []);
+        }
       } finally {
         if (alive) setLoading(false);
       }
@@ -85,68 +89,68 @@ export default function Home() {
     userUrl: string;
   };
 
-  const recentEvents: CustodianEvent[] = [
-    {
-      ts: "2025-08-08T05:12:39Z",
-      type: "outflow",
-      frxusd: 60026.58,
-      asset: "USDC",
-      assetAmount: 60026.58,
-      assetValueUSD: 60026.58,
-      txUrl: "#",
-      custodianUrl: "#",
-      assetUrl: "#",
-      userUrl: "#",
-    },
-    {
-      ts: "2025-08-08T06:50:52Z",
-      type: "inflow",
-      frxusd: 10000.0,
-      asset: "USDC",
-      assetAmount: 10000.0,
-      assetValueUSD: 10000.0,
-      txUrl: "#",
-      custodianUrl: "#",
-      assetUrl: "#",
-      userUrl: "#",
-    },
-    {
-      ts: "2025-08-08T08:18:51Z",
-      type: "inflow",
-      frxusd: 35710.19,
-      asset: "USDC",
-      assetAmount: 35710.19,
-      assetValueUSD: 35710.19,
-      txUrl: "#",
-      custodianUrl: "#",
-      assetUrl: "#",
-      userUrl: "#",
-    },
-    {
-      ts: "2025-08-08T13:02:50Z",
-      type: "inflow",
-      frxusd: 145531.17,
-      asset: "USDC",
-      assetAmount: 145531.17,
-      assetValueUSD: 145531.17,
-      txUrl: "#",
-      custodianUrl: "#",
-      assetUrl: "#",
-      userUrl: "#",
-    },
-    {
-      ts: "2025-08-08T14:32:02Z",
-      type: "inflow",
-      frxusd: 10232.65,
-      asset: "USDC",
-      assetAmount: 10232.65,
-      assetValueUSD: 10232.65,
-      txUrl: "#",
-      custodianUrl: "#",
-      assetUrl: "#",
-      userUrl: "#",
-    },
-  ];
+  // const recentEvents: CustodianEvent[] = [
+  //   {
+  //     ts: "2025-08-08T05:12:39Z",
+  //     type: "outflow",
+  //     frxusd: 60026.58,
+  //     asset: "USDC",
+  //     assetAmount: 60026.58,
+  //     assetValueUSD: 60026.58,
+  //     txUrl: "#",
+  //     custodianUrl: "#",
+  //     assetUrl: "#",
+  //     userUrl: "#",
+  //   },
+  //   {
+  //     ts: "2025-08-08T06:50:52Z",
+  //     type: "inflow",
+  //     frxusd: 10000.0,
+  //     asset: "USDC",
+  //     assetAmount: 10000.0,
+  //     assetValueUSD: 10000.0,
+  //     txUrl: "#",
+  //     custodianUrl: "#",
+  //     assetUrl: "#",
+  //     userUrl: "#",
+  //   },
+  //   {
+  //     ts: "2025-08-08T08:18:51Z",
+  //     type: "inflow",
+  //     frxusd: 35710.19,
+  //     asset: "USDC",
+  //     assetAmount: 35710.19,
+  //     assetValueUSD: 35710.19,
+  //     txUrl: "#",
+  //     custodianUrl: "#",
+  //     assetUrl: "#",
+  //     userUrl: "#",
+  //   },
+  //   {
+  //     ts: "2025-08-08T13:02:50Z",
+  //     type: "inflow",
+  //     frxusd: 145531.17,
+  //     asset: "USDC",
+  //     assetAmount: 145531.17,
+  //     assetValueUSD: 145531.17,
+  //     txUrl: "#",
+  //     custodianUrl: "#",
+  //     assetUrl: "#",
+  //     userUrl: "#",
+  //   },
+  //   {
+  //     ts: "2025-08-08T14:32:02Z",
+  //     type: "inflow",
+  //     frxusd: 10232.65,
+  //     asset: "USDC",
+  //     assetAmount: 10232.65,
+  //     assetValueUSD: 10232.65,
+  //     txUrl: "#",
+  //     custodianUrl: "#",
+  //     assetUrl: "#",
+  //     userUrl: "#",
+  //   },
+  // ];
 
   const fmtUSDLong = (n: number) =>
     `$${n.toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
@@ -215,7 +219,7 @@ export default function Home() {
         </Typography>
 
         {/* Section 1: Custodian Values */}
-        <Box sx={{ textAlign: "left", mb: 2 }}>
+        {/* <Box sx={{ textAlign: "left", mb: 2 }}>
           <Typography variant="h6" sx={{ mb: 1 }}>
             Custodian Values
           </Typography>
@@ -249,14 +253,14 @@ export default function Home() {
               </Box>
             ))}
           </Box>
-        </Box>
+        </Box> */}
 
 
         {/* Thin divider */}
         <Box sx={{ height: 1, background: "rgba(255,255,255,0.12)", my: 2 }} />
 
         {/* Section 2: Total Transfers · All Chains */}
-        <Box sx={{ textAlign: "left", mb: 2 }}>
+        {/* <Box sx={{ textAlign: "left", mb: 2 }}>
           <Typography variant="h6" sx={{ mb: 1 }}>
             Total Transfers · All Chains · Last 24 hrs
           </Typography>
@@ -283,13 +287,13 @@ export default function Home() {
               <Typography variant="h6">{totalsAllChains.uniqueWallets.toLocaleString()}</Typography>
             </Box>
           </Box>
-        </Box>
+        </Box> */}
 
         {/* Thin divider */}
         <Box sx={{ height: 1, background: "rgba(255,255,255,0.12)", my: 2 }} />
 
         {/* Section 3: Inflows / Outflows */}
-        <Box sx={{ textAlign: "left", mb: 1 }}>
+        {/* <Box sx={{ textAlign: "left", mb: 1 }}>
           <Typography variant="h6" sx={{ mb: 1 }}>
             Aggregate Inflows / Outflows · Last 24 hrs
           </Typography>
@@ -318,7 +322,7 @@ export default function Home() {
               </Typography>
             </Box>
           </Box>
-        </Box>
+        </Box> */}
 
         {/* Divider */}
 <Box sx={{ height: 1, background: "rgba(255,255,255,0.12)", my: 2 }} />
@@ -369,7 +373,7 @@ export default function Home() {
           </TableHead>
 
             <TableBody>
-              {recentEvents.map((e, i) => (
+              {recent.map((e, i) => (
                 <TableRow
                   key={`${e.ts}-${i}`}
                   sx={{ "&:hover": { background: "#555" }, cursor: "pointer" }}
@@ -406,15 +410,6 @@ export default function Home() {
                     <Box sx={{ display: "flex", justifyContent: "center", gap: 1, flexWrap: "wrap" }}>
                       <Link href={e.txUrl} target="_blank" rel="noopener" sx={{ color: "white" }}>
                         Tx <OpenInNewIcon sx={{ fontSize: 14, ml: 0.25 }} />
-                      </Link>
-                      <Link href={e.custodianUrl} target="_blank" rel="noopener" sx={{ color: "white" }}>
-                        Custodian <OpenInNewIcon sx={{ fontSize: 14, ml: 0.25 }} />
-                      </Link>
-                      <Link href={e.assetUrl} target="_blank" rel="noopener" sx={{ color: "white" }}>
-                        Asset <OpenInNewIcon sx={{ fontSize: 14, ml: 0.25 }} />
-                      </Link>
-                      <Link href={e.userUrl} target="_blank" rel="noopener" sx={{ color: "white" }}>
-                        User <OpenInNewIcon sx={{ fontSize: 14, ml: 0.25 }} />
                       </Link>
                     </Box>
                   </TableCell>
