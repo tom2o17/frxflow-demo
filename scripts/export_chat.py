@@ -17,8 +17,8 @@ SESSION = os.environ["TG_SESSION_STRING"]
 
 CHAT = int("-1002766583366")  # your channel id
 TOPIC_ID = int("2")       # your topic id
-LIMIT = int(os.environ.get("LIMIT", "300"))
-DEBUG_LINKS = os.environ.get("DEBUG_LINKS", "0") == "1"
+LIMIT = int("300")
+DEBUG_LINKS = "1"
 
 def grab(pattern, text):
     m = re.search(pattern, text, re.I)
