@@ -5,13 +5,15 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: write
+  contents: write  # needed so GITHUB_TOKEN can push
 
 jobs:
   export:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history for proper commits
 
       - uses: actions/setup-python@v5
         with:
@@ -29,9 +31,8 @@ jobs:
         run: python scripts/export_chat.py
 
       - name: Commit & push JSON
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/telegram-feed.json
-          git commit -m "Update telegram-feed.json" || echo "No changes"
-          git push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update telegram-feed.json"
+          file_pattern: public/telegram-feed.json
+          branch: ${{ github.ref_name }} # push back to same branch
