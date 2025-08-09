@@ -1,9 +1,9 @@
 name: Export Telegram Feed
 on:
   schedule:
-    - cron: "*/2 * * * *"  # every 2 minutes
+    - cron: "*/15 * * * *"  # every 15 minutes
   workflow_dispatch: {}
-
+  
 permissions:
   contents: write
 
