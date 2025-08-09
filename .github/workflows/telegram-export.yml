@@ -3,7 +3,7 @@ on:
   schedule:
     - cron: "*/15 * * * *"  # every 15 minutes
   workflow_dispatch: {}
-  
+
 permissions:
   contents: write
 
@@ -24,8 +24,6 @@ jobs:
           TG_API_ID: ${{ secrets.TG_API_ID }}
           TG_API_HASH: ${{ secrets.TG_API_HASH }}
           TG_SESSION_STRING: ${{ secrets.TG_SESSION_STRING }}
-          TG_CHAT: ${{ secrets.TG_CHAT }}
-          LIMIT: ${{ secrets.LIMIT }}
         run: python scripts/export_chat.py
 
       - name: Commit & push JSON
