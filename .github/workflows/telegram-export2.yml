@@ -36,3 +36,5 @@ jobs:
           commit_message: "Update telegram-feed.json"
           file_pattern: public/telegram-feed.json
           branch: ${{ github.ref_name }} # push back to same branch
+          commit_user_name: github-actions[bot]
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
