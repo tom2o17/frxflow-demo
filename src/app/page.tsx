@@ -1,15 +1,20 @@
 "use client";
 
-import { Box, Typography, Link, Drawer, List, ListItem, ListItemText, TableContainer, TableRow, TableBody, Table, TableCell, Chip, TableHead } from "@mui/material";
+import { Box, Typography, Link, Drawer, List, ListItem, ListItemText, TableContainer, TableRow, TableBody, Table, TableCell, Chip, TableHead, Skeleton, CircularProgress } from "@mui/material";
 import { Language } from "@mui/icons-material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 // import Sirt
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import TelegramIcon from "@mui/icons-material/Telegram";
+import { TablePagination } from "@mui/material";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { useEffect, useState } from "react";
 import { Paper } from "@mui/material";
+import { getLogs } from "viem/actions";
+import { useContractLogsLast43200 } from "src/app/contracts/utils";
+
+import { createPublicClient } from "viem";
 export default function Home() {
   const [recent, setRecent] = useState<CustodianEvent[]>([]);
   const [loading, setLoading] = useState(true);
@@ -19,6 +24,27 @@ export default function Home() {
     setMenuOpen(!isMenuOpen);
   };
 
+  const [page, setPage] = useState(0);
+  const rowsPerPage = 50;
+
+  useEffect(() => {
+    // whenever the feed length changes (new fetch), go back to page 0
+    setPage(0);
+  }, [recent.length]);
+
+  const handleChangePage = (_: unknown, newPage: number) => setPage(newPage);
+
+  // slice the current page
+  const paged = recent.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+
+
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 60_000);
+    return () => clearInterval(id);
+  }, []);
+
+  const HOP_EVENT = "";
   
   useEffect(() => {
     let alive = true;
@@ -29,40 +55,56 @@ export default function Home() {
         if (!alive) return;
         if (r.ok) {
           const data = await r.json();
-          // ensure it's an array
           setRecent(Array.isArray(data) ? data : []);
         }
       } finally {
         if (alive) setLoading(false);
       }
     };
-
     load();
-
-    // optional frontend refresh to feel "live"
-    const id = setInterval(load, 30000); // every 30s
+    const id = setInterval(load, 30000); 
     return () => {
       alive = false;
       clearInterval(id);
     };
   }, []);
 
-  // --- Demo data so the page renders out of the box ---
+  const {
+    data = [],          // default to [] so .length is safe
+    isLoading,          // first load
+    isFetching,         // background refetches (optional)
+    error,              // optional
+  } = useContractLogsLast43200({
+    chainId: 252,
+    address: "0x2A2019b30C157dB6c1C01306b8025167dBe1803B",
+    topic0: "0xdbfa1659e184c2a9ac37b95df45d50585f6cbed8e1ff61f52300a3af246b0dac",
+  });
+
+  let hopsLast48 = 0;
+  // if (data) console.log(results.data.length);
+  if (data) {
+    hopsLast48 = data.length;
+  }
+
+
   const custodians = [
     { name: "USTB", valueUSD: 312345678.23, change24h: 0.85 },
     { name: "WTGXX", valueUSD: 198765432.11, change24h: -0.42 },
     { name: "USDB", valueUSD: 425000000, change24h: 0 },
     { name: "BUIDL", valueUSD: 425000000, change24h: 0 },
   ];
+  
   const totalsAllChains = {
     txCount: 142331,
     volumeUSD: 1823000000,
     uniqueWallets: 54981,
   };
+  
   const flows = {
     inflowsUSD: 25000000,
     outflowsUSD: 18400000,
   };
+  
   const netUSD = flows.inflowsUSD - flows.outflowsUSD;
 
   const fmtUSD = (n: number) =>
@@ -77,10 +119,10 @@ export default function Home() {
   const pctColor = (v: number) => (v > 0 ? "#4caf50" : v < 0 ? "#ef5350" : "rgba(255,255,255,0.7)");
   const pctLabel = (v: number) => (v > 0 ? `▲ ${v.toFixed(2)}%` : v < 0 ? `▼ ${Math.abs(v).toFixed(2)}%` : "—");
   type CustodianEvent = {
-    ts: string;                 // ISO time
+    ts: string;
     type: "inflow" | "outflow"; // inflow = mint, outflow = burn
     frxusd: number;
-    asset: string;              // e.g., USDC
+    asset: string;
     assetAmount: number;
     assetValueUSD: number;
     txUrl: string;
@@ -89,80 +131,46 @@ export default function Home() {
     userUrl: string;
   };
 
-  // const recentEvents: CustodianEvent[] = [
-  //   {
-  //     ts: "2025-08-08T05:12:39Z",
-  //     type: "outflow",
-  //     frxusd: 60026.58,
-  //     asset: "USDC",
-  //     assetAmount: 60026.58,
-  //     assetValueUSD: 60026.58,
-  //     txUrl: "#",
-  //     custodianUrl: "#",
-  //     assetUrl: "#",
-  //     userUrl: "#",
-  //   },
-  //   {
-  //     ts: "2025-08-08T06:50:52Z",
-  //     type: "inflow",
-  //     frxusd: 10000.0,
-  //     asset: "USDC",
-  //     assetAmount: 10000.0,
-  //     assetValueUSD: 10000.0,
-  //     txUrl: "#",
-  //     custodianUrl: "#",
-  //     assetUrl: "#",
-  //     userUrl: "#",
-  //   },
-  //   {
-  //     ts: "2025-08-08T08:18:51Z",
-  //     type: "inflow",
-  //     frxusd: 35710.19,
-  //     asset: "USDC",
-  //     assetAmount: 35710.19,
-  //     assetValueUSD: 35710.19,
-  //     txUrl: "#",
-  //     custodianUrl: "#",
-  //     assetUrl: "#",
-  //     userUrl: "#",
-  //   },
-  //   {
-  //     ts: "2025-08-08T13:02:50Z",
-  //     type: "inflow",
-  //     frxusd: 145531.17,
-  //     asset: "USDC",
-  //     assetAmount: 145531.17,
-  //     assetValueUSD: 145531.17,
-  //     txUrl: "#",
-  //     custodianUrl: "#",
-  //     assetUrl: "#",
-  //     userUrl: "#",
-  //   },
-  //   {
-  //     ts: "2025-08-08T14:32:02Z",
-  //     type: "inflow",
-  //     frxusd: 10232.65,
-  //     asset: "USDC",
-  //     assetAmount: 10232.65,
-  //     assetValueUSD: 10232.65,
-  //     txUrl: "#",
-  //     custodianUrl: "#",
-  //     assetUrl: "#",
-  //     userUrl: "#",
-  //   },
-  // ];
+  const FORTY_EIGHT_HOURS_MS = 48 * 60 * 60 * 1000;
+  const cutoffMs = now - FORTY_EIGHT_HOURS_MS;
+
+  const recent48 = recent.filter(e => new Date(e.ts).getTime() >= cutoffMs);
+
+  const totalMinted48 = recent48
+    .filter(e => e.type === "inflow")
+    .reduce((sum, e) => sum + (e.frxusd || 0), 0);
+
+  const totalRedeemed48 = recent48
+    .filter(e => e.type === "outflow")
+    .reduce((sum, e) => sum + (e.frxusd || 0), 0);
+
+  const net48 = totalMinted48 - totalRedeemed48;
+
 
   const fmtUSDLong = (n: number) =>
     `$${n.toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
 
-  const fmtTime = (iso: string) =>
-    new Date(iso).toLocaleString(undefined, {
-      year: "numeric",
-      month: "short",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-  });
+  const rtf = new Intl.RelativeTimeFormat(undefined, { numeric: "auto" });
+
+  function timeAgo(iso: string, nowMs = now) {
+    const d = new Date(iso).getTime();
+    let diff = Math.round((d - nowMs) / 1000);
+    const ranges: [number, Intl.RelativeTimeFormatUnit][] = [
+      [60, "second"],
+      [60, "minute"],
+      [24, "hour"],
+      [7, "day"],
+      [4.34524, "week"],
+      [12, "month"],           
+    ];
+
+    for (const [limit, unit] of ranges) {
+      if (Math.abs(diff) < limit) return rtf.format(diff, unit);
+      diff = Math.round(diff / limit);
+    }
+    return rtf.format(diff, "year");
+  }
+
 
   return (
     <Box
@@ -217,6 +225,68 @@ export default function Home() {
         >
           Realtime overview of Fraxnet Transfers and Flows.
         </Typography>
+
+        {/* Section: 48h Summary */}
+        <Box sx={{ textAlign: "left", mb: 2 }}>
+          <Typography variant="h6" sx={{ mb: 1 }}>
+            48-Hour Summary
+          </Typography>
+
+          <Box sx={{ display: "grid", gap: 2, gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}>
+            <Box sx={{ background: "#262626", border: "1px solid #333", borderRadius: "10px", p: 2 }}>
+              <Typography variant="subtitle2" sx={{ opacity: 0.85 }}>
+                Total Minted (frxUSD)
+              </Typography>
+              <Typography variant="h6">{fmtUSDLong(totalMinted48)}</Typography>
+            </Box>
+
+            <Box sx={{ background: "#262626", border: "1px solid #333", borderRadius: "10px", p: 2 }}>
+              <Typography variant="subtitle2" sx={{ opacity: 0.85 }}>
+                Total Redeemed (frxUSD)
+              </Typography>
+              <Typography variant="h6">{fmtUSDLong(totalRedeemed48)}</Typography>
+            </Box>
+
+            <Box sx={{ background: "#262626", border: "1px solid #333", borderRadius: "10px", p: 2 }}>
+              <Typography variant="subtitle2" sx={{ opacity: 0.85 }}>
+                Net (Minted − Redeemed)
+              </Typography>
+              <Typography variant="h6" sx={{ color: net48 >= 0 ? "#4caf50" : "#ef5350" }}>
+                {fmtUSDLong(net48)}
+              </Typography>
+            </Box>
+            {/* NEW FIELD: Fraxtal Hops */}
+            {/* NEW FIELD: Fraxtal Hops */}
+            <Box sx={{ background: "#262626", border: "1px solid #333", borderRadius: "10px", p: 2 }}>
+              <Typography variant="subtitle2" sx={{ opacity: 0.85 }}>
+                Fraxtal Hops
+              </Typography>
+
+              <Typography variant="h6" sx={{ display: "flex", alignItems: "center", minHeight: 28 }}>
+                {isLoading ? (
+                  // Option A: subtle numeric skeleton
+                  <Skeleton variant="text" width={80} sx={{ bgcolor: "rgba(255,255,255,0.15)" }} />
+                ) : error ? (
+                  // Optional error fallback
+                  <>—</>
+                ) : (
+                  hopsLast48.toLocaleString()
+                )}
+
+                {/* Optional: tiny spinner on background refetches without replacing the number */}
+                {!isLoading && !error && isFetching && (
+                  <CircularProgress size={14} sx={{ ml: 1 }} />
+                )}
+              </Typography>
+            </Box>
+
+          </Box>
+
+          {/* Tiny caption to clarify window */}
+          <Typography variant="caption" sx={{ mt: 1, display: "block", opacity: 0.75 }}>
+            Rolling last 48 hours from now.
+          </Typography>
+        </Box>
 
         {/* Section 1: Custodian Values */}
         {/* <Box sx={{ textAlign: "left", mb: 2 }}>
@@ -342,26 +412,18 @@ export default function Home() {
           boxShadow: "0 4px 15px rgba(255, 255, 255, 0.2)",
         }}
       >
-        <TableContainer
-          component={Paper}
-          sx={{
-            background: "#333",
-            color: "white",
-            borderRadius: "10px",
-            overflow: "hidden",
-          }}
-        >
-          <Table size="small" stickyHeader>
-            <TableHead
-              sx={{
-                "& .MuiTableCell-head": {
-                  backgroundColor: "#444",   // header bg
-                  color: "white",            // header text
-                  fontWeight: 600,
-                  borderBottom: "1px solid #555",
-                },
-              }}
-            >
+       <TableContainer component={Paper} sx={{ background: "#333", color: "white", borderRadius: "10px", overflow: "hidden" }}>
+        <Table size="small" stickyHeader>
+          <TableHead
+            sx={{
+              "& .MuiTableCell-head": {
+                backgroundColor: "#444",
+                color: "white",
+                fontWeight: 600,
+                borderBottom: "1px solid #555",
+              },
+            }}
+          >
             <TableRow>
               <TableCell align="center">Time</TableCell>
               <TableCell align="center">Type</TableCell>
@@ -372,20 +434,27 @@ export default function Home() {
             </TableRow>
           </TableHead>
 
-            <TableBody>
-              {recent.map((e, i) => (
+          <TableBody>
+            {paged.length === 0 ? (
+              <TableRow>
+                <TableCell align="center" colSpan={6} sx={{ color: "rgba(255,255,255,0.7)" }}>
+                  No activity
+                </TableCell>
+              </TableRow>
+            ) : (
+              paged.map((e, i) => (
                 <TableRow
-                  key={`${e.ts}-${i}`}
+                  key={`${e.ts}-${page}-${i}`}
                   sx={{ "&:hover": { background: "#555" }, cursor: "pointer" }}
                 >
                   <TableCell align="center" sx={{ color: "white" }}>
-                    {fmtTime(e.ts)}
+                    {timeAgo(e.ts)}
                   </TableCell>
 
                   <TableCell align="center" sx={{ color: "white" }}>
                     <Chip
                       size="small"
-                      label={e.type === "inflow" ? "Custodian Inflow" : "Custodian Outflow"}
+                      label={e.type === "inflow" ? "Mint" : "Redeem"}
                       sx={{
                         bgcolor: e.type === "inflow" ? "rgba(76, 175, 80, 0.15)" : "rgba(239, 83, 80, 0.15)",
                         color: e.type === "inflow" ? "#4caf50" : "#ef5350",
@@ -414,10 +483,30 @@ export default function Home() {
                     </Box>
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              ))
+            )}
+          </TableBody>
+        </Table>
+
+        {/* Pager */}
+        <TablePagination
+          component="div"
+          count={recent.length}
+          page={page}
+          onPageChange={handleChangePage}
+          rowsPerPage={rowsPerPage}
+          rowsPerPageOptions={[50]}  // lock at 50 per page
+          sx={{
+            background: "#333",
+            color: "white",
+            borderTop: "1px solid #555",
+            ".MuiTablePagination-selectLabel, .MuiTablePagination-displayedRows": { color: "white" },
+            ".MuiSvgIcon-root": { color: "white" },
+            ".Mui-disabled": { color: "rgba(255,255,255,0.4) !important" },
+          }}
+        />
+      </TableContainer>
+
       </Box>
     </Box>
 
@@ -432,3 +521,4 @@ export default function Home() {
     </Box>
   );
 }
+
