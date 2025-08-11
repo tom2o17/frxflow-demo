@@ -88,38 +88,6 @@ export default function Home() {
     hopsLast48 = data.length;
   }
 
-
-  const custodians = [
-    { name: "USTB", valueUSD: 312345678.23, change24h: 0.85 },
-    { name: "WTGXX", valueUSD: 198765432.11, change24h: -0.42 },
-    { name: "USDB", valueUSD: 425000000, change24h: 0 },
-    { name: "BUIDL", valueUSD: 425000000, change24h: 0 },
-  ];
-  
-  const totalsAllChains = {
-    txCount: 142331,
-    volumeUSD: 1823000000,
-    uniqueWallets: 54981,
-  };
-  
-  const flows = {
-    inflowsUSD: 25000000,
-    outflowsUSD: 18400000,
-  };
-  
-  const netUSD = flows.inflowsUSD - flows.outflowsUSD;
-
-  const fmtUSD = (n: number) =>
-    n >= 1e9
-      ? `$${(n / 1e9).toFixed(2)}B`
-      : n >= 1e6
-      ? `$${(n / 1e6).toFixed(2)}M`
-      : n >= 1e3
-      ? `$${(n / 1e3).toFixed(2)}K`
-      : `$${n.toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
-
-  const pctColor = (v: number) => (v > 0 ? "#4caf50" : v < 0 ? "#ef5350" : "rgba(255,255,255,0.7)");
-  const pctLabel = (v: number) => (v > 0 ? `▲ ${v.toFixed(2)}%` : v < 0 ? `▼ ${Math.abs(v).toFixed(2)}%` : "—");
   type CustodianEvent = {
     ts: string;
     type: "inflow" | "outflow"; // inflow = mint, outflow = burn
@@ -137,9 +105,18 @@ export default function Home() {
   const isXs = useMediaQuery(theme.breakpoints.down("sm"));
 
   const FORTY_EIGHT_HOURS_MS = 48 * 60 * 60 * 1000;
+  // const TWENTY_SEVEN = 27 * 60 * 60 *1000;
   const cutoffMs = now - FORTY_EIGHT_HOURS_MS;
+  console.log(now);
 
-  const recent48 = recent.filter(e => new Date(e.ts).getTime() >= cutoffMs);
+  // const recent48 = recent.filter(e => new Date(e.ts).getTime() >= cutoffMs);
+  const recent48 = recent.filter(e => {
+  const tsMs = new Date(e.ts).getTime();
+    console.log(
+      `Comparing ${tsMs} (${new Date(e.ts).getTime()}) >= ${cutoffMs} (${new Date(cutoffMs).toISOString()})`
+    );
+    return tsMs >= cutoffMs;
+  });
 
   const totalMinted48 = recent48
     .filter(e => e.type === "inflow")
@@ -171,7 +148,7 @@ export default function Home() {
 
     for (const [limit, unit] of ranges) {
       if (Math.abs(diff) < limit) return rtf.format(diff, unit);
-      diff = Math.round(diff / limit);
+      diff = Math.floor(diff / limit);
     }
     return rtf.format(diff, "year");
   }
@@ -247,14 +224,14 @@ export default function Home() {
 
             <Box sx={{ background: "#262626", border: "1px solid #333", borderRadius: "10px", p: 2 }}>
               <Typography variant="subtitle2" sx={{ opacity: 0.85 }}>
-                Total Redeemed (frxUSD)
+                Total Burned (frxUSD)
               </Typography>
               <Typography variant="h6">{fmtUSDLong(totalRedeemed48)}</Typography>
             </Box>
 
             <Box sx={{ background: "#262626", border: "1px solid #333", borderRadius: "10px", p: 2 }}>
               <Typography variant="subtitle2" sx={{ opacity: 0.85 }}>
-                Net (Minted − Redeemed)
+                Net (Minted − Burned)
               </Typography>
               <Typography variant="h6" sx={{ color: net48 >= 0 ? "#4caf50" : "#ef5350" }}>
                 {fmtUSDLong(net48)}
@@ -293,114 +270,14 @@ export default function Home() {
           </Typography>
         </Box>
 
-        {/* Section 1: Custodian Values */}
-        {/* <Box sx={{ textAlign: "left", mb: 2 }}>
-          <Typography variant="h6" sx={{ mb: 1 }}>
-            Custodian Values
-          </Typography>
-
-          <Box
-            sx={{
-              display: "grid",
-              gap: 2,
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", // flexible 4-column layout
-            }}
-          >
-            {custodians.map((c) => (
-              <Box
-                key={c.name}
-                sx={{
-                  background: "#262626",
-                  border: "1px solid #333",
-                  borderRadius: "10px",
-                  p: 2,
-                }}
-              >
-                <Typography variant="subtitle2" sx={{ opacity: 0.85 }}>
-                  {c.name}
-                </Typography>
-                <Typography variant="h6" sx={{ mt: 0.5 }}>
-                  {fmtUSD(c.valueUSD)}
-                </Typography>
-                <Typography variant="caption" sx={{ color: pctColor(c.change24h) }}>
-                  {pctLabel(c.change24h)} (24h)
-                </Typography>
-              </Box>
-            ))}
-          </Box>
-        </Box> */}
-
+        
+        <Box sx={{ height: 1, background: "rgba(255,255,255,0.12)", my: 2 }} />
 
         {/* Thin divider */}
         <Box sx={{ height: 1, background: "rgba(255,255,255,0.12)", my: 2 }} />
 
-        {/* Section 2: Total Transfers · All Chains */}
-        {/* <Box sx={{ textAlign: "left", mb: 2 }}>
-          <Typography variant="h6" sx={{ mb: 1 }}>
-            Total Transfers · All Chains · Last 24 hrs
-          </Typography>
-
-          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
-            <Box sx={{ flex: "1 1 200px", minWidth: 200, background: "#262626", border: "1px solid #333", borderRadius: "10px", p: 2 }}>
-              <Typography variant="subtitle2" sx={{ opacity: 0.85 }}>
-                Transfer Count
-              </Typography>
-              <Typography variant="h6">{totalsAllChains.txCount.toLocaleString()}</Typography>
-            </Box>
-
-            <Box sx={{ flex: "1 1 200px", minWidth: 200, background: "#262626", border: "1px solid #333", borderRadius: "10px", p: 2 }}>
-              <Typography variant="subtitle2" sx={{ opacity: 0.85 }}>
-                Volume (USD)
-              </Typography>
-              <Typography variant="h6">{fmtUSD(totalsAllChains.volumeUSD)}</Typography>
-            </Box>
-
-            <Box sx={{ flex: "1 1 200px", minWidth: 200, background: "#262626", border: "1px solid #333", borderRadius: "10px", p: 2 }}>
-              <Typography variant="subtitle2" sx={{ opacity: 0.85 }}>
-                Unique Wallets
-              </Typography>
-              <Typography variant="h6">{totalsAllChains.uniqueWallets.toLocaleString()}</Typography>
-            </Box>
-          </Box>
-        </Box> */}
-
-        {/* Thin divider */}
+       
         <Box sx={{ height: 1, background: "rgba(255,255,255,0.12)", my: 2 }} />
-
-        {/* Section 3: Inflows / Outflows */}
-        {/* <Box sx={{ textAlign: "left", mb: 1 }}>
-          <Typography variant="h6" sx={{ mb: 1 }}>
-            Aggregate Inflows / Outflows · Last 24 hrs
-          </Typography>
-
-          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
-            <Box sx={{ flex: "1 1 200px", minWidth: 200, background: "#262626", border: "1px solid #333", borderRadius: "10px", p: 2 }}>
-              <Typography variant="subtitle2" sx={{ opacity: 0.85 }}>
-                Inflows
-              </Typography>
-                <Typography variant="h6">{fmtUSD(flows.inflowsUSD)}</Typography>
-            </Box>
-
-            <Box sx={{ flex: "1 1 200px", minWidth: 200, background: "#262626", border: "1px solid #333", borderRadius: "10px", p: 2 }}>
-              <Typography variant="subtitle2" sx={{ opacity: 0.85 }}>
-                Outflows
-              </Typography>
-              <Typography variant="h6">{fmtUSD(flows.outflowsUSD)}</Typography>
-            </Box>
-
-            <Box sx={{ flex: "1 1 200px", minWidth: 200, background: "#262626", border: "1px solid #333", borderRadius: "10px", p: 2 }}>
-              <Typography variant="subtitle2" sx={{ opacity: 0.85 }}>
-                Net Flow
-              </Typography>
-              <Typography variant="h6" sx={{ color: netUSD >= 0 ? "#4caf50" : "#ef5350" }}>
-                {fmtUSD(netUSD)}
-              </Typography>
-            </Box>
-          </Box>
-        </Box> */}
-
-        {/* Divider */}
-<Box sx={{ height: 1, background: "rgba(255,255,255,0.12)", my: 2 }} />
 
 {/* Section 4: Recent Custodian Activity */}
     <Box sx={{ textAlign: "left", mb: 1 }}>
@@ -500,7 +377,7 @@ export default function Home() {
                   <TableCell align="center" sx={{ color: "white" }}>
                     <Chip
                       size="small"
-                      label={e.type === "inflow" ? "Mint" : "Redeem"}
+                      label={e.type === "inflow" ? "Mint" : "Burn"}
                       sx={{
                         bgcolor: e.type === "inflow" ? "rgba(76,175,80,0.15)" : "rgba(239,83,80,0.15)",
                         color: e.type === "inflow" ? "#4caf50" : "#ef5350",
