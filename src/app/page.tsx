@@ -2,21 +2,14 @@
 
 import { Box, Typography, Link, Drawer, List, ListItem, ListItemText, TableContainer, TableRow, TableBody, Table, TableCell, Chip, TableHead, Skeleton, CircularProgress } from "@mui/material";
 import { Language } from "@mui/icons-material";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-// import Sirt
-import GitHubIcon from "@mui/icons-material/GitHub";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import TelegramIcon from "@mui/icons-material/Telegram";
 import { TablePagination } from "@mui/material";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { useEffect, useState } from "react";
 import { Paper } from "@mui/material";
-import { getLogs } from "viem/actions";
-import { useContractLogsLast43200 } from "src/app/contracts/utils";
+import { useContractLogsLast43200 } from "@/app/utils";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import { createPublicClient } from "viem";
 export default function Home() {
   const [recent, setRecent] = useState<CustodianEvent[]>([]);
   const [loading, setLoading] = useState(true);
