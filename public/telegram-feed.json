@@ -1,5 +1,32 @@
 [
   {
+    "ts": "2025-08-11T06:26:27+00:00",
+    "type": "outflow",
+    "frxusd": 4250.59,
+    "asset": "USDC",
+    "assetAmount": 4250.59,
+    "assetValueUSD": 4250.59,
+    "txUrl": "https://etherscan.io/tx/0xe961ad04b41533e28c4c14e5c662576b55c4bc7418bc76677384c98cda582016"
+  },
+  {
+    "ts": "2025-08-11T06:20:13+00:00",
+    "type": "outflow",
+    "frxusd": 20015.37,
+    "asset": "USDC",
+    "assetAmount": 20015.37,
+    "assetValueUSD": 20015.37,
+    "txUrl": "https://etherscan.io/tx/0x3c14c153ff86bec1addd3cd88c537d7f343e067dacb58b024029cc25a8cb93d3"
+  },
+  {
+    "ts": "2025-08-11T06:07:01+00:00",
+    "type": "outflow",
+    "frxusd": 13788.28,
+    "asset": "USDC",
+    "assetAmount": 13788.28,
+    "assetValueUSD": 13788.28,
+    "txUrl": "https://etherscan.io/tx/0xf712d39748f8582504125c23815f8a8dfb8de70d43de8c45ab26200751e13c5f"
+  },
+  {
     "ts": "2025-08-11T05:19:01+00:00",
     "type": "outflow",
     "frxusd": 1610.7,
@@ -2653,32 +2680,5 @@
     "assetAmount": 392336.763993,
     "assetValueUSD": 392336.763993,
     "txUrl": "https://etherscan.io/tx/0xd224d7280e858339b4487fca5fd5bdcf7dcced773719d7aa18de36bfec04a74c"
-  },
-  {
-    "ts": "2025-07-20T03:38:50+00:00",
-    "type": "inflow",
-    "frxusd": 61838.99067399999,
-    "asset": "USDC",
-    "assetAmount": 61838.990674,
-    "assetValueUSD": 61838.990674,
-    "txUrl": "https://etherscan.io/tx/0xcb746b09565e5f45e9f4ca14d494a2bc1a93d15bb6ecbd2555462b3983ce7fa5"
-  },
-  {
-    "ts": "2025-07-20T03:37:38+00:00",
-    "type": "inflow",
-    "frxusd": 61838.99067399999,
-    "asset": "USDC",
-    "assetAmount": 61838.990674,
-    "assetValueUSD": 61838.990674,
-    "txUrl": "https://etherscan.io/tx/0x53fefb9b057e9466f9950aeb673e904d77ce4f87aa66131fe5756b8609473f4e"
-  },
-  {
-    "ts": "2025-07-20T01:10:25+00:00",
-    "type": "inflow",
-    "frxusd": 7530.8968700000005,
-    "asset": "USDC",
-    "assetAmount": 7530.89687,
-    "assetValueUSD": 7530.89687,
-    "txUrl": "https://etherscan.io/tx/0xb9f60f14317b898d0a35ad0a4d1031c940361fe97b7abc8789b43ecee80e7d17"
   }
 ]
