@@ -13,6 +13,8 @@ import { useEffect, useState } from "react";
 import { Paper } from "@mui/material";
 import { getLogs } from "viem/actions";
 import { useContractLogsLast43200 } from "src/app/contracts/utils";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { createPublicClient } from "viem";
 export default function Home() {
@@ -130,6 +132,9 @@ export default function Home() {
     assetUrl: string;
     userUrl: string;
   };
+
+  const theme = useTheme();
+  const isXs = useMediaQuery(theme.breakpoints.down("sm"));
 
   const FORTY_EIGHT_HOURS_MS = 48 * 60 * 60 * 1000;
   const cutoffMs = now - FORTY_EIGHT_HOURS_MS;
@@ -408,12 +413,23 @@ export default function Home() {
           background: "#1f1f1f",
           p: 2,
           borderRadius: "15px",
-          border: "1px solid #444",
-          boxShadow: "0 4px 15px rgba(255, 255, 255, 0.2)",
+          maxWidth: 900,
+          width: "100%",             // was 92%
+          mx: "auto",
+          boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
         }}
       >
-       <TableContainer component={Paper} sx={{ background: "#333", color: "white", borderRadius: "10px", overflow: "hidden" }}>
-        <Table size="small" stickyHeader>
+      <TableContainer
+        component={Paper}
+        sx={{
+          background: "#333",
+          color: "white",
+          borderRadius: "10px",
+          overflow: "hidden",
+          overflowX: "auto",           // <- horizontal scroll safety
+        }}
+      >
+        <Table size="small" stickyHeader={!isXs}>  {/* disable sticky on xs */}
           <TableHead
             sx={{
               "& .MuiTableCell-head": {
@@ -421,6 +437,8 @@ export default function Home() {
                 color: "white",
                 fontWeight: 600,
                 borderBottom: "1px solid #555",
+                px: { xs: 1, sm: 2 },  // tighter padding on xs
+                py: { xs: 1, sm: 1.5 },
               },
             }}
           >
@@ -428,8 +446,15 @@ export default function Home() {
               <TableCell align="center">Time</TableCell>
               <TableCell align="center">Type</TableCell>
               <TableCell align="center">frxUSD</TableCell>
-              <TableCell align="center">Asset</TableCell>
-              <TableCell align="center">Asset Value</TableCell>
+
+              {/* Hide on phones */}
+              <TableCell align="center" sx={{ display: { xs: "none", sm: "table-cell" } }}>
+                Asset
+              </TableCell>
+              <TableCell align="center" sx={{ display: { xs: "none", sm: "table-cell" } }}>
+                Asset Value
+              </TableCell>
+
               <TableCell align="center">Links</TableCell>
             </TableRow>
           </TableHead>
@@ -445,9 +470,30 @@ export default function Home() {
               paged.map((e, i) => (
                 <TableRow
                   key={`${e.ts}-${page}-${i}`}
-                  sx={{ "&:hover": { background: "#555" }, cursor: "pointer" }}
+                  onClick={isXs ? () => window.open(e.txUrl, "_blank", "noopener,noreferrer") : undefined}
+                  sx={{
+                    height: 44,
+                    "&:hover": { background: "#555" },
+                    cursor: "pointer",
+                    "& .MuiTableCell-root": {
+                      px: { xs: 1, sm: 2 },
+                      py: { xs: 1, sm: 1.25 },
+                      whiteSpace: { xs: "normal", sm: "nowrap" }, // wrap on xs
+                      
+                    },
+                  }}
                 >
-                  <TableCell align="center" sx={{ color: "white" }}>
+                  <TableCell
+                    align="center"
+                    sx={{
+                      color: "white",
+                      minWidth: 80,        // prevents it from shrinking too much
+                      maxWidth: 90,        // keeps column from expanding
+                      whiteSpace: "normal", // allow wrapping
+                      lineHeight: 1.2,      // tighter text
+                      py: 0.5,              // less vertical padding
+                    }}
+                  >
                     {timeAgo(e.ts)}
                   </TableCell>
 
@@ -456,26 +502,42 @@ export default function Home() {
                       size="small"
                       label={e.type === "inflow" ? "Mint" : "Redeem"}
                       sx={{
-                        bgcolor: e.type === "inflow" ? "rgba(76, 175, 80, 0.15)" : "rgba(239, 83, 80, 0.15)",
+                        bgcolor: e.type === "inflow" ? "rgba(76,175,80,0.15)" : "rgba(239,83,80,0.15)",
                         color: e.type === "inflow" ? "#4caf50" : "#ef5350",
                         border: `1px solid ${e.type === "inflow" ? "#2e7d32" : "#c62828"}`,
+                        height: 22,
+                        "& .MuiChip-label": { px: 1 },
                       }}
                     />
                   </TableCell>
 
-                  <TableCell align="center" sx={{ color: "white", whiteSpace: "nowrap" }}>
+                  <TableCell align="center" sx={{ color: "white" }}>
                     {fmtUSDLong(e.frxusd)}
                   </TableCell>
 
-                  <TableCell align="center" sx={{ color: "white", whiteSpace: "nowrap" }}>
+                  {/* Hidden on xs */}
+                  <TableCell
+                    align="center"
+                    sx={{ color: "white", display: { xs: "none", sm: "table-cell" } }}
+                  >
                     {e.asset} · {fmtUSDLong(e.assetAmount)}
                   </TableCell>
 
-                  <TableCell align="center" sx={{ color: "white", whiteSpace: "nowrap" }}>
+                  <TableCell
+                    align="center"
+                    sx={{ color: "white", display: { xs: "none", sm: "table-cell" } }}
+                  >
                     {fmtUSDLong(e.assetValueUSD)}
                   </TableCell>
 
-                  <TableCell align="center" sx={{ color: "white" }}>
+                  <TableCell 
+                    align="center" 
+                    sx={{ 
+                      color: "white",
+                      display: { xs: "none", sm: "table-cell" }, // hide on mobile
+                      cursor: "pointer",
+                    }}
+                  >
                     <Box sx={{ display: "flex", justifyContent: "center", gap: 1, flexWrap: "wrap" }}>
                       <Link href={e.txUrl} target="_blank" rel="noopener" sx={{ color: "white" }}>
                         Tx <OpenInNewIcon sx={{ fontSize: 14, ml: 0.25 }} />
@@ -487,20 +549,23 @@ export default function Home() {
             )}
           </TableBody>
         </Table>
-
-        {/* Pager */}
+        {/* Pagination: shrink text on xs */}
         <TablePagination
           component="div"
           count={recent.length}
           page={page}
           onPageChange={handleChangePage}
           rowsPerPage={rowsPerPage}
-          rowsPerPageOptions={[50]}  // lock at 50 per page
+          rowsPerPageOptions={[50]}
           sx={{
             background: "#333",
             color: "white",
             borderTop: "1px solid #555",
-            ".MuiTablePagination-selectLabel, .MuiTablePagination-displayedRows": { color: "white" },
+            ".MuiTablePagination-toolbar": { px: { xs: 1, sm: 2 } },
+            ".MuiTablePagination-selectLabel, .MuiTablePagination-displayedRows": {
+              color: "white",
+              fontSize: { xs: 12, sm: 14 },
+            },
             ".MuiSvgIcon-root": { color: "white" },
             ".Mui-disabled": { color: "rgba(255,255,255,0.4) !important" },
           }}
