@@ -1,5 +1,32 @@
 [
   {
+    "ts": "2025-08-11T03:19:49+00:00",
+    "type": "outflow",
+    "frxusd": 4022.24,
+    "asset": "USDC",
+    "assetAmount": 4022.24,
+    "assetValueUSD": 4022.24,
+    "txUrl": "https://etherscan.io/tx/0x68b92f612ab1ad29163dd159dec01a481e6442093c686f57c2d6e1a954e79b07"
+  },
+  {
+    "ts": "2025-08-11T02:53:49+00:00",
+    "type": "inflow",
+    "frxusd": 2455.29,
+    "asset": "USDC",
+    "assetAmount": 2455.29,
+    "assetValueUSD": 2455.29,
+    "txUrl": "https://etherscan.io/tx/0x1799321d070f625effe5886a7edb598e8bd4574b3229049d268ab44955cc61c5"
+  },
+  {
+    "ts": "2025-08-11T02:53:25+00:00",
+    "type": "inflow",
+    "frxusd": 6463.84,
+    "asset": "USDC",
+    "assetAmount": 6463.84,
+    "assetValueUSD": 6463.84,
+    "txUrl": "https://etherscan.io/tx/0x09245db9144dcfcc60d53a6b51b3890b8e94ac8aba04104d13d3a114914346b8"
+  },
+  {
     "ts": "2025-08-10T23:09:25+00:00",
     "type": "outflow",
     "frxusd": 4162.15,
@@ -2653,32 +2680,5 @@
     "assetAmount": 79436.671747,
     "assetValueUSD": 79436.671747,
     "txUrl": "https://etherscan.io/tx/0xa083185f7c041ecb13ba4385e989e282d4cc399e60c8225f83f6b8840fc698d2"
-  },
-  {
-    "ts": "2025-07-19T17:05:27+00:00",
-    "type": "inflow",
-    "frxusd": 119589.585097,
-    "asset": "USDC",
-    "assetAmount": 119589.585097,
-    "assetValueUSD": 119589.585097,
-    "txUrl": "https://etherscan.io/tx/0x496d650988d7c8203c36e78ad92414e714c5a89c78313355b6bd8179c0d9e009"
-  },
-  {
-    "ts": "2025-07-19T16:03:02+00:00",
-    "type": "inflow",
-    "frxusd": 112933.329852,
-    "asset": "USDC",
-    "assetAmount": 112933.329852,
-    "assetValueUSD": 112933.329852,
-    "txUrl": "https://etherscan.io/tx/0x1cf9615091a4cd43e3c8a4c8a66f2046cef81742abd9cbc38eff56decb9ec7a6"
-  },
-  {
-    "ts": "2025-07-19T10:04:13+00:00",
-    "type": "inflow",
-    "frxusd": 112933.329852,
-    "asset": "USDC",
-    "assetAmount": 112933.329852,
-    "assetValueUSD": 112933.329852,
-    "txUrl": "https://etherscan.io/tx/0xabdf577df01d1f43d0ea0f7540df4a4ecbad34187484ce44a2347a6f958d24c6"
   }
 ]
