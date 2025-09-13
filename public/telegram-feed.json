@@ -1,5 +1,32 @@
 [
   {
+    "ts": "2025-09-13T14:38:26+00:00",
+    "type": "inflow",
+    "frxusd": 101235.41,
+    "asset": "USDC",
+    "assetAmount": 101235.41,
+    "assetValueUSD": 101235.41,
+    "txUrl": "https://etherscan.io/tx/0x102882c999d9673c15b1012c9f820603cc47b52cfb198825b5088ac09b51da6d"
+  },
+  {
+    "ts": "2025-09-13T14:35:25+00:00",
+    "type": "inflow",
+    "frxusd": 111369.3,
+    "asset": "USDC",
+    "assetAmount": 111369.3,
+    "assetValueUSD": 111369.3,
+    "txUrl": "https://etherscan.io/tx/0x1aa0f17691fc5dfcc77a7a470cc8d12e445abb691aabab1de6545aa47f8c7e9e"
+  },
+  {
+    "ts": "2025-09-13T14:32:25+00:00",
+    "type": "inflow",
+    "frxusd": 3211.57,
+    "asset": "USDC",
+    "assetAmount": 3211.57,
+    "assetValueUSD": 3211.57,
+    "txUrl": "https://etherscan.io/tx/0x2f9758cd1f9af992f87d9f719718d116b6dfec5330a548964a7ab8df3b7cee56"
+  },
+  {
     "ts": "2025-09-13T13:30:49+00:00",
     "type": "outflow",
     "frxusd": 84909.59,
@@ -2662,32 +2689,5 @@
     "assetAmount": 0.99,
     "assetValueUSD": 0.99,
     "txUrl": "https://etherscan.io/tx/0x5b855d32190eff825c38d283efeccedae86c03d51425b2a6b272774619dcf503"
-  },
-  {
-    "ts": "2025-09-04T09:30:13+00:00",
-    "type": "outflow",
-    "frxusd": 2985.84,
-    "asset": "USDC",
-    "assetAmount": 2985.84,
-    "assetValueUSD": 2985.84,
-    "txUrl": "https://etherscan.io/tx/0xb8e34599b0b4c3a78e1cf3b0191ca5671fdeab403d1d9dc630d57b59b19f7fcf"
-  },
-  {
-    "ts": "2025-09-04T08:02:50+00:00",
-    "type": "outflow",
-    "frxusd": 145634.17,
-    "asset": "USDC",
-    "assetAmount": 145634.17,
-    "assetValueUSD": 145634.17,
-    "txUrl": "https://etherscan.io/tx/0xbbd9ee9ec1b991f52af08e94af1748c31d7137adbff2a09a1224dea2944f48e6"
-  },
-  {
-    "ts": "2025-09-04T08:02:39+00:00",
-    "type": "outflow",
-    "frxusd": 50215.75,
-    "asset": "USDC",
-    "assetAmount": 50215.75,
-    "assetValueUSD": 50215.75,
-    "txUrl": "https://etherscan.io/tx/0x9088a672218140b479bd62788dc5a87d1454522972a9d3d8fad5faffe2ab6fe5"
   }
 ]
