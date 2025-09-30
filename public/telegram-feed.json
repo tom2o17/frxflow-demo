@@ -1,5 +1,32 @@
 [
   {
+    "ts": "2025-09-30T17:52:13+00:00",
+    "type": "outflow",
+    "frxusd": 39259.32,
+    "asset": "USDC",
+    "assetAmount": 39259.32,
+    "assetValueUSD": 39259.32,
+    "txUrl": "https://etherscan.io/tx/0x58c074e80e2d23939e3a955d7a8bc40ad78b7ee983e6077eac646e037765f86b"
+  },
+  {
+    "ts": "2025-09-30T17:48:15+00:00",
+    "type": "inflow",
+    "frxusd": 13527.03,
+    "asset": "USDC",
+    "assetAmount": 13527.03,
+    "assetValueUSD": 13527.03,
+    "txUrl": "https://etherscan.io/tx/0xa2452f2aaab5ed6c08331f9941a54a183992a0525c266098809fe0eb0df10a81"
+  },
+  {
+    "ts": "2025-09-30T17:47:13+00:00",
+    "type": "inflow",
+    "frxusd": 13442.46,
+    "asset": "USDC",
+    "assetAmount": 13442.46,
+    "assetValueUSD": 13442.46,
+    "txUrl": "https://etherscan.io/tx/0x71230329c156633caa9fedfd8c505ca556034c2230f30ad8b6ccfe2cd4ca7fa7"
+  },
+  {
     "ts": "2025-09-30T16:26:25+00:00",
     "type": "outflow",
     "frxusd": 40136.55,
@@ -2671,32 +2698,5 @@
     "assetAmount": 8576.56,
     "assetValueUSD": 8576.56,
     "txUrl": "https://etherscan.io/tx/0xe4e55319888807b1b4a42e1912df99a717e563dd6f14c521fa4ccdc1f18183e9"
-  },
-  {
-    "ts": "2025-09-24T08:45:01+00:00",
-    "type": "outflow",
-    "frxusd": 35634.97,
-    "asset": "USDC",
-    "assetAmount": 35634.97,
-    "assetValueUSD": 35634.97,
-    "txUrl": "https://etherscan.io/tx/0xf488f7c40ef929327127b00dbbbecb7f73ff44fe57264396426a34e9f1d3aeb8"
-  },
-  {
-    "ts": "2025-09-24T08:42:50+00:00",
-    "type": "outflow",
-    "frxusd": 523121.91,
-    "asset": "USDC",
-    "assetAmount": 523121.91,
-    "assetValueUSD": 523121.91,
-    "txUrl": "https://etherscan.io/tx/0x8eaef5763aed3f4bb5900e6409e67c1ad5db4edc1f2a912bcc0854acda70c38a"
-  },
-  {
-    "ts": "2025-09-24T08:40:14+00:00",
-    "type": "outflow",
-    "frxusd": 49165.64,
-    "asset": "USDC",
-    "assetAmount": 49165.64,
-    "assetValueUSD": 49165.64,
-    "txUrl": "https://etherscan.io/tx/0xbc57bbcfac530e26753ce7c055258c128c35af705af078b2aa93cdead57ae2ad"
   }
 ]
