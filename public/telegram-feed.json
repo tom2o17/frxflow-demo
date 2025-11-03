@@ -1,5 +1,32 @@
 [
   {
+    "ts": "2025-11-03T10:15:49+00:00",
+    "type": "outflow",
+    "frxusd": 48209.01,
+    "asset": "USDC",
+    "assetAmount": 48209.01,
+    "assetValueUSD": 48209.01,
+    "txUrl": "https://etherscan.io/tx/0xabfda8e1e24357e681b56757e669fa55e14e2dba7982f992fc8a15aef85dcd65"
+  },
+  {
+    "ts": "2025-11-03T10:10:49+00:00",
+    "type": "outflow",
+    "frxusd": 13504.11,
+    "asset": "USTB",
+    "assetAmount": 1241.08,
+    "assetValueUSD": 13502.75,
+    "txUrl": "https://etherscan.io/tx/0xe2c917f8a855d18176bf1bcf828c38f33c4fd2b18461e5ee2fd8e9a42f323858"
+  },
+  {
+    "ts": "2025-11-03T10:04:50+00:00",
+    "type": "outflow",
+    "frxusd": 85011.92,
+    "asset": "USDC",
+    "assetAmount": 85011.92,
+    "assetValueUSD": 85011.92,
+    "txUrl": "https://etherscan.io/tx/0x4768a39a44adb73a53cef4cfc891b85a094211a3d212002018d3d62fc7032a8b"
+  },
+  {
     "ts": "2025-11-03T09:58:38+00:00",
     "type": "inflow",
     "frxusd": 3000.03,
@@ -2671,32 +2698,5 @@
     "assetAmount": 56038.22,
     "assetValueUSD": 56038.22,
     "txUrl": "https://etherscan.io/tx/0x7fa77b67d138e6b4bdf25fe1c0da357be011b5bc034898cf768d116bfc1ef840"
-  },
-  {
-    "ts": "2025-10-29T19:38:49+00:00",
-    "type": "outflow",
-    "frxusd": 180798.6,
-    "asset": "USDC",
-    "assetAmount": 180798.6,
-    "assetValueUSD": 180798.6,
-    "txUrl": "https://etherscan.io/tx/0xdc88e8251bf2854a1df3260c82eba5c3003bb53f08ab217ffb991ecca8c9d27f"
-  },
-  {
-    "ts": "2025-10-29T18:37:17+00:00",
-    "type": "outflow",
-    "frxusd": 14322.12,
-    "asset": "USDC",
-    "assetAmount": 14322.12,
-    "assetValueUSD": 14322.12,
-    "txUrl": "https://etherscan.io/tx/0x5612a8230addeb4274803b14936dd2d51d69607e2f4a2418c3a0a156a656b02b"
-  },
-  {
-    "ts": "2025-10-29T17:53:26+00:00",
-    "type": "inflow",
-    "frxusd": 8100.0,
-    "asset": "USDC",
-    "assetAmount": 8100.0,
-    "assetValueUSD": 8100.0,
-    "txUrl": "https://etherscan.io/tx/0x8d7481c250f20c5d46ba54ebf9ffa5052f4385523e63731dba17657abfa3c28e"
   }
 ]
