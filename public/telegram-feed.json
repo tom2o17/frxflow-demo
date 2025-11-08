@@ -1,5 +1,32 @@
 [
   {
+    "ts": "2025-11-08T01:03:38+00:00",
+    "type": "outflow",
+    "frxusd": 15004.21,
+    "asset": "USDC",
+    "assetAmount": 15004.21,
+    "assetValueUSD": 15004.21,
+    "txUrl": "https://etherscan.io/tx/0xbb3d8899fe369583c6cf8a8c4f4880d38d8cb0bf87154cb573e408d8b74a8e0b"
+  },
+  {
+    "ts": "2025-11-08T01:02:03+00:00",
+    "type": "outflow",
+    "frxusd": 109897.36,
+    "asset": "USDC",
+    "assetAmount": 109897.36,
+    "assetValueUSD": 109897.36,
+    "txUrl": "https://etherscan.io/tx/0x92cda71c867d7f1dafe25062d08ab4b45033c5b87a81ba22b00a80456609aeab"
+  },
+  {
+    "ts": "2025-11-08T01:02:02+00:00",
+    "type": "outflow",
+    "frxusd": 3067.95,
+    "asset": "USDC",
+    "assetAmount": 3067.95,
+    "assetValueUSD": 3067.95,
+    "txUrl": "https://etherscan.io/tx/0xa27e5e997685130b376426c64e3973eec5f7e0ead7a272693575c8f7a3bba032"
+  },
+  {
     "ts": "2025-11-07T23:41:14+00:00",
     "type": "inflow",
     "frxusd": 1253.03,
@@ -2671,32 +2698,5 @@
     "assetAmount": 9190.34,
     "assetValueUSD": 100001.55,
     "txUrl": "https://etherscan.io/tx/0x513bfab9cea69ca9736ab0bc324de8218dd056bf0bbde2dfac5cce4c618e779a"
-  },
-  {
-    "ts": "2025-11-04T17:04:01+00:00",
-    "type": "outflow",
-    "frxusd": 693642.79,
-    "asset": "USTB",
-    "assetAmount": 63740.83,
-    "assetValueUSD": 693573.42,
-    "txUrl": "https://etherscan.io/tx/0x95b62d9c198b8514887e1cac625c83858b4495eef7594990e6897e11789e7153"
-  },
-  {
-    "ts": "2025-11-04T17:03:50+00:00",
-    "type": "outflow",
-    "frxusd": 673737.93,
-    "asset": "USTB",
-    "assetAmount": 61911.71,
-    "assetValueUSD": 673670.55,
-    "txUrl": "https://etherscan.io/tx/0x60f2fd5b7ea71460863da86a0c6883b5b00034f2027244618076c105eb2c625a"
-  },
-  {
-    "ts": "2025-11-04T16:21:37+00:00",
-    "type": "outflow",
-    "frxusd": 119077.17,
-    "asset": "USTB",
-    "assetAmount": 10942.37,
-    "assetValueUSD": 119065.26,
-    "txUrl": "https://etherscan.io/tx/0x7359a7322eb58bc19c6aa300b7f2dceff127ebb4ed1f276181c0f22ad8880009"
   }
 ]
