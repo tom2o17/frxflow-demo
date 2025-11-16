@@ -1,5 +1,32 @@
 [
   {
+    "ts": "2025-11-16T02:54:26+00:00",
+    "type": "outflow",
+    "frxusd": 4294.56,
+    "asset": "USDC",
+    "assetAmount": 4294.56,
+    "assetValueUSD": 4294.56,
+    "txUrl": "https://etherscan.io/tx/0x6f3f88b04eed10f188227c2cabfd3fb0cdd29e918386b836c96e4a1a64bb4b2d"
+  },
+  {
+    "ts": "2025-11-16T02:50:13+00:00",
+    "type": "outflow",
+    "frxusd": 11913.96,
+    "asset": "USDC",
+    "assetAmount": 11913.96,
+    "assetValueUSD": 11913.96,
+    "txUrl": "https://etherscan.io/tx/0xac80f330091f86d78fc3017041edd7150f5db996cbd039c0afa80c83f3760d47"
+  },
+  {
+    "ts": "2025-11-16T02:18:49+00:00",
+    "type": "outflow",
+    "frxusd": 11871.03,
+    "asset": "USDC",
+    "assetAmount": 11871.03,
+    "assetValueUSD": 11871.03,
+    "txUrl": "https://etherscan.io/tx/0x8f914c50d0c3ac48a3af06ea648aa66f503206efe8f57f9eb654cfe322c4547b"
+  },
+  {
     "ts": "2025-11-16T00:56:38+00:00",
     "type": "inflow",
     "frxusd": 673.27,
@@ -2536,32 +2563,5 @@
     "assetAmount": 126407.3,
     "assetValueUSD": 126407.3,
     "txUrl": "https://etherscan.io/tx/0x612ad77efadc06f22d40cf435b1036c14645f1b63fce01d29d8cd64099f6fa35"
-  },
-  {
-    "ts": "2025-11-09T23:03:37+00:00",
-    "type": "inflow",
-    "frxusd": 132002.55,
-    "asset": "USDC",
-    "assetAmount": 132002.55,
-    "assetValueUSD": 132002.55,
-    "txUrl": "https://etherscan.io/tx/0xf955674a15bab9bee05a5e4a675e8e18d908dd53dde054faf5250886643225c7"
-  },
-  {
-    "ts": "2025-11-09T23:02:50+00:00",
-    "type": "inflow",
-    "frxusd": 141042.09,
-    "asset": "USDC",
-    "assetAmount": 141042.09,
-    "assetValueUSD": 141042.09,
-    "txUrl": "https://etherscan.io/tx/0x3e451f15c04e151b56507a6d8e5ced30315e7347e3b958d1b4b756e0281518c4"
-  },
-  {
-    "ts": "2025-11-09T23:02:13+00:00",
-    "type": "inflow",
-    "frxusd": 266916.07,
-    "asset": "USDC",
-    "assetAmount": 266916.07,
-    "assetValueUSD": 266916.07,
-    "txUrl": "https://etherscan.io/tx/0x89d746a80bcfe3a140b4ccbcf2699b40b46497a78b75a26e074869f443e06016"
   }
 ]
