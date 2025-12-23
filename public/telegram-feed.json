@@ -1,5 +1,32 @@
 [
   {
+    "ts": "2025-12-23T14:27:41+00:00",
+    "type": "outflow",
+    "frxusd": 6703.4,
+    "asset": "USDC",
+    "assetAmount": 6703.4,
+    "assetValueUSD": 6703.4,
+    "txUrl": "https://etherscan.io/tx/0x7d8c92749e84aa4ff7d82912c9920dac4cace07f7f1e8e2509977832a00ac778"
+  },
+  {
+    "ts": "2025-12-23T14:27:26+00:00",
+    "type": "outflow",
+    "frxusd": 261633.11,
+    "asset": "USTB",
+    "assetAmount": 23922.99,
+    "assetValueUSD": 261606.95,
+    "txUrl": "https://etherscan.io/tx/0xbcc187bcf1ed482ffb812524f85302bc35e203fe37c83ad6381942eb9068548e"
+  },
+  {
+    "ts": "2025-12-23T14:27:13+00:00",
+    "type": "outflow",
+    "frxusd": 57861.51,
+    "asset": "USDC",
+    "assetAmount": 57861.51,
+    "assetValueUSD": 57861.51,
+    "txUrl": "https://etherscan.io/tx/0x8868d414eceb2507a95ca42fe60a049a59b16876de11045212918b4eb1c61b17"
+  },
+  {
     "ts": "2025-12-23T13:52:12+00:00",
     "type": "inflow",
     "frxusd": 64544.84,
@@ -2635,32 +2662,5 @@
     "assetAmount": 161312.17,
     "assetValueUSD": 161312.17,
     "txUrl": "https://etherscan.io/tx/0x6cf6f784d4d465f0bb37934b7e3e232c97355e285328744298c85eb33b40ac5e"
-  },
-  {
-    "ts": "2025-12-18T18:18:04+00:00",
-    "type": "outflow",
-    "frxusd": 185045.81,
-    "asset": "USDC",
-    "assetAmount": 185045.81,
-    "assetValueUSD": 185045.81,
-    "txUrl": "https://etherscan.io/tx/0xa81a0ebd255e20b23e67b61f7ab97a50be73ffea57cccdfe9fd5b2a44de8a67d"
-  },
-  {
-    "ts": "2025-12-18T18:17:25+00:00",
-    "type": "outflow",
-    "frxusd": 193927.05,
-    "asset": "USDC",
-    "assetAmount": 193927.05,
-    "assetValueUSD": 193927.05,
-    "txUrl": "https://etherscan.io/tx/0x6c40055cdd3a834b10a91dcc42fc6b2b2ea5fc40af42c6a3a2adb392478aea64"
-  },
-  {
-    "ts": "2025-12-18T18:17:13+00:00",
-    "type": "outflow",
-    "frxusd": 193925.42,
-    "asset": "USDC",
-    "assetAmount": 193925.42,
-    "assetValueUSD": 193925.42,
-    "txUrl": "https://etherscan.io/tx/0xdba234589129b07412373cc906b53542210aba1e81bade480359e293b30bad61"
   }
 ]
