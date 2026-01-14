@@ -1,5 +1,32 @@
 [
   {
+    "ts": "2026-01-14T17:21:02+00:00",
+    "type": "inflow",
+    "frxusd": 212132.03,
+    "asset": "USDC",
+    "assetAmount": 212132.03,
+    "assetValueUSD": 212132.03,
+    "txUrl": "https://etherscan.io/tx/0xc760112549267dae1ded6d6a1621989e34f537fae0f04c8b03be038ef37fcf01"
+  },
+  {
+    "ts": "2026-01-14T16:55:26+00:00",
+    "type": "inflow",
+    "frxusd": 370334.67,
+    "asset": "USDC",
+    "assetAmount": 370334.67,
+    "assetValueUSD": 370334.67,
+    "txUrl": "https://etherscan.io/tx/0x966c35439e90abf2cfcbeccdbdb5b6bf5cbcefd04a1481770e56ae1ef11e6255"
+  },
+  {
+    "ts": "2026-01-14T16:55:13+00:00",
+    "type": "inflow",
+    "frxusd": 270535.73,
+    "asset": "USDC",
+    "assetAmount": 270535.73,
+    "assetValueUSD": 270535.73,
+    "txUrl": "https://etherscan.io/tx/0x4ae01358c1da4fd7cff845e4112893ff2c9b89109d7641dc06d7a5402c1bd792"
+  },
+  {
     "ts": "2026-01-14T16:46:37+00:00",
     "type": "inflow",
     "frxusd": 275106.25,
@@ -2671,32 +2698,5 @@
     "assetAmount": 1976.03,
     "assetValueUSD": 1976.03,
     "txUrl": "https://etherscan.io/tx/0xf1c3cdd2317236f64b00979bfcb7aec72cb75d432b545e56ad39b48ef755ef3d"
-  },
-  {
-    "ts": "2026-01-10T15:34:14+00:00",
-    "type": "outflow",
-    "frxusd": 41652.15,
-    "asset": "USDC",
-    "assetAmount": 41652.15,
-    "assetValueUSD": 41652.15,
-    "txUrl": "https://etherscan.io/tx/0x1044863e6b5292c1299911a1d886cb1db4a805cd668dedcf0d224345afd0b33b"
-  },
-  {
-    "ts": "2026-01-10T14:49:13+00:00",
-    "type": "inflow",
-    "frxusd": 84968.52,
-    "asset": "USDC",
-    "assetAmount": 84968.52,
-    "assetValueUSD": 84968.52,
-    "txUrl": "https://etherscan.io/tx/0xe347368949108f08d26673317b26232e61b8a7f1126090c25bccfa3d1d717c5e"
-  },
-  {
-    "ts": "2026-01-10T14:28:38+00:00",
-    "type": "outflow",
-    "frxusd": 2254.24,
-    "asset": "USDC",
-    "assetAmount": 2254.24,
-    "assetValueUSD": 2254.24,
-    "txUrl": "https://etherscan.io/tx/0x0bcdb79594339fa96f8d4ac207f5b46c4c7236d99359811bde12dd17f8198156"
   }
 ]
