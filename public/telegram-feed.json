@@ -1,5 +1,59 @@
 [
   {
+    "ts": "2026-03-19T18:29:25+00:00",
+    "type": "inflow",
+    "frxusd": 2.0,
+    "asset": "USDC",
+    "assetAmount": 2.0,
+    "assetValueUSD": 2.0,
+    "txUrl": "https://etherscan.io/tx/0x38b73a6561598f1456178ca572da01e60cbe773751fb8d3ae9b2d56aa506ab25"
+  },
+  {
+    "ts": "2026-03-19T18:01:52+00:00",
+    "type": "outflow",
+    "frxusd": 3954.65,
+    "asset": "USTB",
+    "assetAmount": 358.65,
+    "assetValueUSD": 3954.25,
+    "txUrl": "https://etherscan.io/tx/0x35f1e1333b5d1ba440676af1b39988f87607de0aa3c498b26e577490b910d61d"
+  },
+  {
+    "ts": "2026-03-19T18:01:51+00:00",
+    "type": "outflow",
+    "frxusd": 45.34,
+    "asset": "USDC",
+    "assetAmount": 45.34,
+    "assetValueUSD": 45.34,
+    "txUrl": "https://etherscan.io/tx/0x35f1e1333b5d1ba440676af1b39988f87607de0aa3c498b26e577490b910d61d"
+  },
+  {
+    "ts": "2026-03-19T17:55:49+00:00",
+    "type": "outflow",
+    "frxusd": 1.0,
+    "asset": "USDC",
+    "assetAmount": 1.0,
+    "assetValueUSD": 1.0,
+    "txUrl": "https://etherscan.io/tx/0x9110f0ef4f96e5f9644bc6dce2362dd750f90ae058e7fd3c546ff843272f9b8e"
+  },
+  {
+    "ts": "2026-03-19T17:49:14+00:00",
+    "type": "inflow",
+    "frxusd": 1.0,
+    "asset": "USDC",
+    "assetAmount": 1.0,
+    "assetValueUSD": 1.0,
+    "txUrl": "https://etherscan.io/tx/0xae1c7065224b603fcdb302754274063a06541fe0bb385d241e8461c6d78446d9"
+  },
+  {
+    "ts": "2026-03-19T17:38:50+00:00",
+    "type": "outflow",
+    "frxusd": 254.65,
+    "asset": "USDC",
+    "assetAmount": 254.65,
+    "assetValueUSD": 254.65,
+    "txUrl": "https://etherscan.io/tx/0x68b255b78df4fc6342526cefd21f1b3a5e37baa9d0561de82a0f1ec11ef5bd97"
+  },
+  {
     "ts": "2026-03-19T17:30:49+00:00",
     "type": "inflow",
     "frxusd": 300.0,
@@ -2644,59 +2698,5 @@
     "assetAmount": 597.1,
     "assetValueUSD": 597.1,
     "txUrl": "https://etherscan.io/tx/0x1a4baa1f8128db52061fcca42f956d5bb8fc4c4e4a979de6f90d9c0d087b5f2a"
-  },
-  {
-    "ts": "2026-03-19T02:36:50+00:00",
-    "type": "inflow",
-    "frxusd": 62.68,
-    "asset": "USDC",
-    "assetAmount": 62.68,
-    "assetValueUSD": 62.68,
-    "txUrl": "https://etherscan.io/tx/0x2f01e3750db602905f66634ea6f60cd92a4fa5412ff53802203cc5a41f0248db"
-  },
-  {
-    "ts": "2026-03-19T02:35:01+00:00",
-    "type": "outflow",
-    "frxusd": 568.03,
-    "asset": "USDC",
-    "assetAmount": 568.03,
-    "assetValueUSD": 568.03,
-    "txUrl": "https://etherscan.io/tx/0xe3620b00332c6a221ec90fdfdd2d1dcd8dfa99d22c879c920c242de64f75eaf1"
-  },
-  {
-    "ts": "2026-03-19T02:34:49+00:00",
-    "type": "inflow",
-    "frxusd": 599.59,
-    "asset": "USDC",
-    "assetAmount": 599.59,
-    "assetValueUSD": 599.59,
-    "txUrl": "https://etherscan.io/tx/0x1df27e330f0601f3e3684de914c079036e84d88d362ceab652923f68dcb62915"
-  },
-  {
-    "ts": "2026-03-19T02:32:27+00:00",
-    "type": "outflow",
-    "frxusd": 549.82,
-    "asset": "USDC",
-    "assetAmount": 549.82,
-    "assetValueUSD": 549.82,
-    "txUrl": "https://etherscan.io/tx/0xee42aaecc8d032cd148bfaa2e44cb09dbeb5a6f78d8e36104c1594dd7272dd5c"
-  },
-  {
-    "ts": "2026-03-19T02:32:26+00:00",
-    "type": "outflow",
-    "frxusd": 1101.01,
-    "asset": "USDC",
-    "assetAmount": 1101.01,
-    "assetValueUSD": 1101.01,
-    "txUrl": "https://etherscan.io/tx/0x6a5a2cada7b1f5408cc51ebf151c98f30d15e4c38b0b4c9df096635c65f31cea"
-  },
-  {
-    "ts": "2026-03-19T02:28:01+00:00",
-    "type": "inflow",
-    "frxusd": 219.53,
-    "asset": "USDC",
-    "assetAmount": 219.53,
-    "assetValueUSD": 219.53,
-    "txUrl": "https://etherscan.io/tx/0x4336d21f264d8387b4cb0c4ef8a8db92fff1c7ccb73a476cdb327a22e112b204"
   }
 ]
